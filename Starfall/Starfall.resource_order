@@ -1,0 +1,25 @@
+{
+  "FolderOrderSettings":[
+    {"name":"Extensions","order":1,"path":"folders/Extensions.yy",},
+    {"name":"Fonts","order":2,"path":"folders/Fonts.yy",},
+    {"name":"Notes","order":3,"path":"folders/Notes.yy",},
+    {"name":"Objects","order":4,"path":"folders/Objects.yy",},
+    {"name":"Paths","order":5,"path":"folders/Paths.yy",},
+    {"name":"Rooms","order":6,"path":"folders/Rooms.yy",},
+    {"name":"Scripts","order":7,"path":"folders/Scripts.yy",},
+    {"name":"Sequences","order":8,"path":"folders/Sequences.yy",},
+    {"name":"Shaders","order":9,"path":"folders/Shaders.yy",},
+    {"name":"Sounds","order":13,"path":"folders/Sounds.yy",},
+    {"name":"Sprites","order":10,"path":"folders/Sprites.yy",},
+    {"name":"Menu","order":1,"path":"folders/Sprites/Menu.yy",},
+    {"name":"Tile Sets","order":11,"path":"folders/Tile Sets.yy",},
+    {"name":"Timelines","order":12,"path":"folders/Timelines.yy",},
+  ],
+  "ResourceOrderSettings":[
+    {"name":"Credits","order":1,"path":"notes/Credits/Credits.yy",},
+    {"name":"Network_Constants","order":1,"path":"scripts/Network_Constants/Network_Constants.yy",},
+    {"name":"Process_Buffer","order":2,"path":"scripts/Process_Buffer/Process_Buffer.yy",},
+    {"name":"sMMenuButtonsOff","order":1,"path":"sprites/sMMenuButtonsOff/sMMenuButtonsOff.yy",},
+    {"name":"sMMenuButtonsOn","order":2,"path":"sprites/sMMenuButtonsOn/sMMenuButtonsOn.yy",},
+  ],
+}

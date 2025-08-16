@@ -1,0 +1,3 @@
+Leva - creating mostly all of this
+Ruby - making the menu and improving the online functions
+Keni - helped me pick the license

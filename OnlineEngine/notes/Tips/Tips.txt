@@ -1,3 +1,0 @@
-You can have players send their sprites with
-buffer_write(buff, buffer_string, sprite_get_name(sprite_index))
-in their Online region. You can also send what room they're in in a similar manner.
