@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"Process_Buffer",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"Process_Buffer",
+  "parent":{
+    "name":"Scripts",
+    "path":"folders/Scripts.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

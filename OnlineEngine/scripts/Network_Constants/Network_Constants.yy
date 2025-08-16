@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"Network_Constants",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"Network_Constants",
+  "parent":{
+    "name":"Scripts",
+    "path":"folders/Scripts.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}
