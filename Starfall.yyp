@@ -56,7 +56,6 @@
     {"id":{"name":"sMMenuButtonsOn","path":"sprites/sMMenuButtonsOn/sMMenuButtonsOn.yy",},},
     {"id":{"name":"sPlayer","path":"sprites/sPlayer/sPlayer.yy",},},
     {"id":{"name":"sSolid","path":"sprites/sSolid/sSolid.yy",},},
-    {"id":{"name":"Overworld","path":"tilesets/Overworld/Overworld.yy",},},
   ],
   "resourceType":"GMProject",
   "resourceVersion":"2.0",

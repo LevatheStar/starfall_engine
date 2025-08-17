@@ -1,3 +1,4 @@
+if global.Menu_Type = "buttons" {
 if curmenu==0 {
 	// kb
 	if keyboard_check_pressed(vk_up) sel0=(sel0+4)%2;
@@ -18,4 +19,10 @@ if curmenu==0 {
 			room_goto(rServer);
 		break;
 	}}
-}
+}} else if global.Menu_Type = "letters" {
+var join_key = ord(join_letter)
+var host_key = ord(host_letter)
+if keyboard_check_pressed(join_key){
+room_goto(rClient);}
+if keyboard_check_pressed(host_key){
+room_goto(rServer);}}
