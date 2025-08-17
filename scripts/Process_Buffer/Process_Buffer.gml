@@ -11,15 +11,18 @@ function Process_Buffer() {
 	switch (PACKET_ID) {
 		
 		#region Player
-		case network.player:			
+		case network.player:
+		/*
 			var player_id =			buffer_read(packet, buffer_u16);	
 			var player_x =			buffer_read(packet, buffer_s16);
 			var player_y =			buffer_read(packet, buffer_s16);
 			var player_latency =    buffer_read(packet, buffer_u8);
 			var player_name =       buffer_read(packet, buffer_string)
-			
-
+			*/
+			var player_struct = buffer_read(packet, buffer_string)
+            var struct = json_parse(player_struct)
 			var buff = buffer_create(32, buffer_grow, 1);
+			/*
 			buffer_seek(buff, buffer_seek_start, 0);
 			buffer_write(buff, buffer_u8, network.player);
 			buffer_write(buff, buffer_u16, player_id);
@@ -27,7 +30,9 @@ function Process_Buffer() {
 			buffer_write(buff, buffer_s16, player_y);
 			buffer_write(buff, buffer_u8, player_latency)
 			buffer_write(buff, buffer_string, player_name)
-			ds_map_add(player_ids, socket, player_id)
+			*/
+			buffer_write(buff, buffer_string, player_struct)
+			ds_map_add(player_ids, socket, struct.socket)
 			
 
 			for (var i = 0; i < ds_list_size(total_players); i++) {

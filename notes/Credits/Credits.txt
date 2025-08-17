@@ -1,3 +1,4 @@
 Leva - creating mostly all of this
 Ruby - making the menu and improving the online functions
 Keni - helped me pick the license
+cmd28 - helped me make the jump from sending individual pieces of information to structs.

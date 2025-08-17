@@ -9,37 +9,40 @@ var PACKET_ID = buffer_read(packet, buffer_u8);
 switch (PACKET_ID) {
 	#region Joining
 	case network.establish:
-		var player_id = buffer_read(packet, buffer_u8);
-		sock = player_id;
+		var player_socket = buffer_read(packet, buffer_u8);
+		sock = player_socket;
 		connected = true;
-		ds_map_add(instances,player_id,noone);
+		ds_map_add(instances,player_socket,noone);
 		break;
 	#endregion
 	
 	#region Players
 	case network.player:	
-		var player_id = buffer_read(packet, buffer_u8);
-		var find_player = ds_map_find_value(instances, player_id);		
+	var player_struct = buffer_read(packet, buffer_string)
+		var player_ID = player_struct.socket
+		var find_player = ds_map_find_value(instances, player_ID);		
 		
 		
 		if (is_undefined(find_player)) {
 			var p = instance_create_layer(0, 0, "Instances", oPlayer);
-			ds_map_add(instances, player_id, p);
-			p.my_id = player_id;
+			ds_map_add(instances, player_ID, p);
+			p.my_id = player_ID;
 		} else {	
-			if (sock != player_id) && (instance_exists(find_player)) {
+			if (sock != player_ID) && (instance_exists(find_player)) {
 				//Player stuff
-				var player_x =                buffer_read(packet, buffer_s16);
-				var player_y =                buffer_read(packet, buffer_s16);
-				var player_latency =          buffer_read(packet, buffer_u8)
-				var player_name =             buffer_read(packet, buffer_string)
-				
+
+				var player_x =                player_struct.x
+				var player_y =                player_struct.y
+				var player_latency =          player_struct.latency
+				var player_name =             player_struct.name
+
 				//Assign player stuff
+
 				find_player.x =               player_x;
 				find_player.y =               player_y;
 				find_player.latency =         player_latency
 				find_player.name =            player_name
-			}
+}
 		}
 	break;
 	#endregion

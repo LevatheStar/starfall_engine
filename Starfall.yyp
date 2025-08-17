@@ -1,6 +1,6 @@
 {
   "$GMProject":"v1",
-  "%Name":"OnlineEngine",
+  "%Name":"Starfall",
   "AudioGroups":[
     {"$GMAudioGroup":"","%Name":"audiogroup_default","name":"audiogroup_default","resourceType":"GMAudioGroup","resourceVersion":"2.0","targets":-1,},
   ],
@@ -36,7 +36,7 @@
   "MetaData":{
     "IDEVersion":"2024.13.1.193",
   },
-  "name":"OnlineEngine",
+  "name":"Starfall",
   "resources":[
     {"id":{"name":"Credits","path":"notes/Credits/Credits.yy",},},
     {"id":{"name":"Tips","path":"notes/Tips/Tips.yy",},},

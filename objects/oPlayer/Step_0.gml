@@ -46,13 +46,15 @@ y += yvel;
 	if oClient.connected = true {
 	//send our data.
 	var buff = buffer_create(32, buffer_grow, 1);
+	var struct = {
+	socket: oClient.sock,
+	x: x,
+	y: y,
+	latency: latency,
+	name: name}
 	buffer_seek(buff, buffer_seek_start, 0);
-	buffer_write(buff, buffer_u8, network.player);					
-	buffer_write(buff, buffer_u8, oClient.sock);							
-	buffer_write(buff, buffer_s16, x);								
-	buffer_write(buff, buffer_s16, y);								
-	buffer_write(buff, buffer_u8, latency)
-	buffer_write(buff, buffer_string, name)
+	buffer_write(buff, buffer_u8, network.player);	
+	buffer_write(buff, buffer_string, json_stringify(struct));
 	network_send_packet(oClient.client, buff, buffer_tell(buff));	
 	buffer_delete(buff);
 	}
