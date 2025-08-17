@@ -24,13 +24,13 @@ function Process_Buffer() {
 			var buff = buffer_create(32, buffer_grow, 1);
 			/*
 			buffer_seek(buff, buffer_seek_start, 0);
-			buffer_write(buff, buffer_u8, network.player);
 			buffer_write(buff, buffer_u16, player_id);
 			buffer_write(buff, buffer_s16, player_x);
 			buffer_write(buff, buffer_s16, player_y);
 			buffer_write(buff, buffer_u8, player_latency)
 			buffer_write(buff, buffer_string, player_name)
 			*/
+			buffer_write(buff, buffer_u8, network.player);
 			buffer_write(buff, buffer_string, player_struct)
 			ds_map_add(player_ids, socket, struct.socket)
 			

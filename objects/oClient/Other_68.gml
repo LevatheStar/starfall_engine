@@ -18,7 +18,7 @@ switch (PACKET_ID) {
 	
 	#region Players
 	case network.player:	
-	var player_struct = buffer_read(packet, buffer_string)
+	    var player_struct = json_parse(buffer_read(packet, buffer_string))
 		var player_ID = player_struct.socket
 		var find_player = ds_map_find_value(instances, player_ID);		
 		
