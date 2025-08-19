@@ -14,3 +14,7 @@ global.Ip_Port_ask = "separate"
 //buttons means that there will be 2 buttons for hosting and joining.
 //letters means that the player will need to press buttons on their keyboard for hosting and joining. Broken!
 global.Menu_Type = "buttons"
+//Player Info Sending
+//Structs is easier to manage, but increases information size, which puts strain on the server.
+//One by one is harder to manage, but doesn't increase information size, which doesn't put strain on the server.
+global.Info_Sending = "One by one"

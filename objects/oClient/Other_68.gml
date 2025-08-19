@@ -17,11 +17,19 @@ switch (PACKET_ID) {
 	#endregion
 	
 	#region Players
-	case network.player:	
-	    var player_struct = json_parse(buffer_read(packet, buffer_string))
-		var player_ID = player_struct.socket
-		var find_player = ds_map_find_value(instances, player_ID);		
-		
+	case network.player:
+	var player_ID =                undefined
+	var player_x =                 undefined
+	var player_y =                 undefined
+	var player_latency =           undefined
+	var player_name =              undefined
+	var player_struct =            undefined
+		if global.Info_Sending = "Structs"{
+	    player_struct = json_parse(buffer_read(packet, buffer_string))
+        player_ID = player_struct.socket
+		} else {
+		player_ID = buffer_read(packet, buffer_u16)}
+		var find_player = ds_map_find_value(instances, player_ID);
 		
 		if (is_undefined(find_player)) {
 			var p = instance_create_layer(0, 0, "Instances", oPlayer);
@@ -30,11 +38,15 @@ switch (PACKET_ID) {
 		} else {	
 			if (sock != player_ID) && (instance_exists(find_player)) {
 				//Player stuff
-
-				var player_x =                player_struct.x
-				var player_y =                player_struct.y
-				var player_latency =          player_struct.latency
-				var player_name =             player_struct.name
+                if global.Info_Sending = "Structs"{
+				player_x =                player_struct.x
+				player_y =                player_struct.y
+				player_latency =          player_struct.latency
+				player_name =             player_struct.name} else {
+				player_x =                buffer_read(packet, buffer_s16)
+				player_y =                buffer_read(packet, buffer_s16)
+				player_latency =          buffer_read(packet, buffer_u8)
+				player_name =             buffer_read(packet, buffer_string)}
 
 				//Assign player stuff
 

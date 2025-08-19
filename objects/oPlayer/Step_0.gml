@@ -44,19 +44,32 @@ y += yvel;
 	#region Online
 	// If the connection is established, then we
 	if oClient.connected = true {
+	if global.Info_Sending = "Structs"
+	{
 	//send our data.
-	var buff = buffer_create(32, buffer_grow, 1);
+	var sbuff = buffer_create(32, buffer_grow, 1);
 	var struct = {
 	socket: oClient.sock,
 	x: x,
 	y: y,
 	latency: latency,
 	name: name}
-	buffer_seek(buff, buffer_seek_start, 0);
-	buffer_write(buff, buffer_u8, network.player);	
-	buffer_write(buff, buffer_string, json_stringify(struct));
-	network_send_packet(oClient.client, buff, buffer_tell(buff));	
-	buffer_delete(buff);
+	buffer_seek(sbuff, buffer_seek_start, 0);
+	buffer_write(sbuff, buffer_u8, network.player);	
+	buffer_write(sbuff, buffer_string, json_stringify(struct));
+	network_send_packet(oClient.client, sbuff, buffer_tell(sbuff));	
+	buffer_delete(sbuff);}
+	else {
+	var obuff = buffer_create(32, buffer_grow, 1);
+	buffer_seek(obuff, buffer_seek_start, 0);
+	buffer_write(obuff, buffer_u8, network.player);	
+	buffer_write(obuff, buffer_u16, oClient.sock)
+	buffer_write(obuff, buffer_s16, x)
+	buffer_write(obuff, buffer_s16, y)
+	buffer_write(obuff, buffer_u8, latency)
+	buffer_write(obuff, buffer_string, name)
+	network_send_packet(oClient.client, obuff, buffer_tell(obuff));	
+	}
 	}
     #endregion
 }

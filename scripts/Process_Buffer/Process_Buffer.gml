@@ -12,6 +12,11 @@ function Process_Buffer() {
 		
 		#region Player
 		case network.player:
+		var buff = buffer_create(32, buffer_grow, 1);
+		var add_socket = undefined
+		buffer_seek(buff, buffer_seek_start, 0);
+		if global.Info_Sending = "Structs"
+		{
 		/*
 			var player_id =			buffer_read(packet, buffer_u16);	
 			var player_x =			buffer_read(packet, buffer_s16);
@@ -21,7 +26,6 @@ function Process_Buffer() {
 			*/
 			var player_struct = buffer_read(packet, buffer_string)
             var struct = json_parse(player_struct)
-			var buff = buffer_create(32, buffer_grow, 1);
 			/*
 			buffer_seek(buff, buffer_seek_start, 0);
 			buffer_write(buff, buffer_u16, player_id);
@@ -32,9 +36,26 @@ function Process_Buffer() {
 			*/
 			buffer_write(buff, buffer_u8, network.player);
 			buffer_write(buff, buffer_string, player_struct)
-			ds_map_add(player_ids, socket, struct.socket)
+			add_socket = struct.socket}
+			else {
+			var player_id =			buffer_read(packet, buffer_u16);	
+			var player_x =			buffer_read(packet, buffer_s16);
+			var player_y =			buffer_read(packet, buffer_s16);
+			var player_latency =    buffer_read(packet, buffer_u8);
+			var player_name =       buffer_read(packet, buffer_string)
 			
-
+			buffer_seek(buff, buffer_seek_start, 0);
+			buffer_write(buff, buffer_u8, network.player)
+			buffer_write(buff, buffer_u16, player_id);
+			buffer_write(buff, buffer_s16, player_x);
+			buffer_write(buff, buffer_s16, player_y);
+			buffer_write(buff, buffer_u8, player_latency)
+			buffer_write(buff, buffer_string, player_name)
+			
+			add_socket = player_id
+			}
+			
+            ds_map_add(player_ids, socket, add_socket)
 			for (var i = 0; i < ds_list_size(total_players); i++) {
 			network_send_packet(ds_list_find_value(total_players, i), buff, buffer_tell(buff));}
 			
